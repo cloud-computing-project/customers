@@ -13,4 +13,4 @@ docker run -p 8080:8080 -e KUMULUZEE_CONFIG_ETCD_HOSTS=http://192.168.99.100:237
 ```
 
 ## Travis status 
-[![Build Status](https://travis-ci.org/cloud-computing-project/customers.svg?branch=master)]
+[![Build Status](https://travis-ci.org/cloud-computing-project/customers.svg?branch=master)](https://travis-ci.org/cloud-computing-project/customers)
