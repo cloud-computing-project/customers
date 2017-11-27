@@ -12,5 +12,5 @@ docker run -d --name rso-customers -e POSTGRES_USER=dbuser -e POSTGRES_PASSWORD=
 docker run -p 8080:8080 -e KUMULUZEE_CONFIG_ETCD_HOSTS=http://192.168.99.100:2379 amela/customers
 ```
 
-##Travis status 
-https://travis-ci.org/cloud-computing-project/customers.svg?branch=master
+## Travis status 
+[![Build Status](https://travis-ci.org/cloud-computing-project/customers.svg?branch=master)]
