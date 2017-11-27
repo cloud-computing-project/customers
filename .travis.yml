@@ -15,8 +15,8 @@ cache:
 
 install:
   - mvn clean package -U
-  - docker build -t amela/customers .
+  - docker build -t "$DOCKER_IMAGE" .
 
 after_success:
     - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-    - docker push amela/customers
+    - docker push "$DOCKER_IMAGE"
