@@ -7,11 +7,11 @@ spec:
   template:
     metadata:
       labels:
-        app: customer
+        app: customers
     spec:
       containers:
-      - image: amela/customer
-        name: customer
+      - image: amela/customers
+        name: customers
         env:
           - name: KUMULUZEE_DISCOVERY_CLUSTER
             value: bluemix
