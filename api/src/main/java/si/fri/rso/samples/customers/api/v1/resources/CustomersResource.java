@@ -47,7 +47,7 @@ public class CustomersResource {
     }
 
     @GET
-    @Path("/{customerId}")
+    @Path("{customerId}")
     public Response getCustomer(@PathParam("customerId") String customerId) {
 
         Customer customer = customersBean.getCustomer(customerId);
