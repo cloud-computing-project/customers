@@ -26,6 +26,8 @@ public class Customer {
 
     private String address;
 
+    private String city;
+
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
@@ -64,6 +66,13 @@ public class Customer {
         this.address = address;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
     public Date getDateOfBirth() {
         return dateOfBirth;
     }

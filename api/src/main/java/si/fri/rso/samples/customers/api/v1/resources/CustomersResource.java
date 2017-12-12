@@ -78,7 +78,7 @@ public class CustomersResource {
 
     @PUT
     @Path("{customerId}")
-    public Response putZavarovanec(@PathParam("customerId") String customerId, Customer customer) {
+    public Response putCustomer(@PathParam("customerId") String customerId, Customer customer) {
 
         customer = customersBean.putCustomer(customerId, customer);
 
