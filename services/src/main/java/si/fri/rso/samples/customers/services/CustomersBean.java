@@ -172,7 +172,7 @@ public class CustomersBean {
     }
 
     public List<Comment> getComments(String customerId) {
-
+        log.info("base url " + baseUrlComments);
         if (baseUrlComments.isPresent()) {
             try {
                 return httpClient
