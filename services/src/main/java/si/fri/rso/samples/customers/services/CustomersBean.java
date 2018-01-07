@@ -151,6 +151,7 @@ public class CustomersBean {
 
 
     public List<Order> getOrders(String customerId) {
+        log.info("base url orders " + baseUrl);
 
         if (baseUrl.isPresent()) {
             try {
@@ -172,7 +173,7 @@ public class CustomersBean {
     }
 
     public List<Comment> getComments(String customerId) {
-        log.info("base url " + baseUrlComments);
+        log.info("base url comments " + baseUrlComments);
         if (baseUrlComments.isPresent()) {
             try {
                 return httpClient
