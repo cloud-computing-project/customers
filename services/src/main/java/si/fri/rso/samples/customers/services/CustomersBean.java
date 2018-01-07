@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import com.kumuluz.ee.discovery.annotations.DiscoverService;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.NotFoundException;
@@ -24,6 +25,7 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.UriInfo;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @RequestScoped
@@ -42,12 +44,13 @@ public class CustomersBean {
 
     private Client httpClient;
 
-    private String baseUrl;
+    @Inject
+    @DiscoverService("rso-orders")
+    private Optional<String> baseUrl;
 
     @PostConstruct
     private void init() {
         httpClient = ClientBuilder.newClient();
-        baseUrl = "http://192.168.99.100:8081"; // only for demonstration
     }
 
 
@@ -75,12 +78,10 @@ public class CustomersBean {
             throw new NotFoundException();
         }
 
-        //if(false) {
-            if (restProperties.isOrderServiceEnabled()) {
-                List<Order> orders = customersBean.getOrders(customerId);
-                customer.setOrders(orders);
-            }
-        //}
+        if (restProperties.isOrderServiceEnabled()) {
+            List<Order> orders = customersBean.getOrders(customerId);
+            customer.setOrders(orders);
+        }
 
         return customer;
     }
@@ -139,16 +140,19 @@ public class CustomersBean {
 
     public List<Order> getOrders(String customerId) {
 
-        try {
-            return httpClient
-                    .target(baseUrl + "/v1/orders?where=customerId:EQ:" + customerId)
-                    .request().get(new GenericType<List<Order>>() {
-                    });
-        } catch (WebApplicationException | ProcessingException e) {
-            log.error(e);
-            throw new InternalServerErrorException(e);
+        if (baseUrl.isPresent()) {
+            try {
+                return httpClient
+                        .target(baseUrl.get() + "/v1/orders?where=customerId:EQ:" + customerId)
+                        .request().get(new GenericType<List<Order>>() {
+                        });
+            } catch (WebApplicationException | ProcessingException e) {
+                log.error(e);
+                throw new InternalServerErrorException(e);
+            }
         }
 
+        return new ArrayList<>();
     }
 
     public List<Order> getOrdersFallback(String customerId) {
