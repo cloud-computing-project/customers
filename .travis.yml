@@ -13,10 +13,13 @@ cache:
   directories:
   - $HOME/.m2
 
+env:
+  - DOCKER_IMAGE2=amela/customers:healthcheck
+
 install:
   - mvn clean package -U
-  - docker build -t "$DOCKER_IMAGE" .
+  - docker build -t "$DOCKER_IMAGE2" .
 
 after_success:
     - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-    - docker push "$DOCKER_IMAGE"
+    - docker push "$DOCKER_IMAGE2"
