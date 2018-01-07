@@ -5,8 +5,8 @@ import java.util.Date;
 public class Order {
 
     private String id;
-    private String title;
-    private String description;
+    private String productId;
+    //private String description;
     private Date submitted;
     private String customerId;
 
@@ -18,7 +18,7 @@ public class Order {
         this.id = id;
     }
 
-    public String getTitle() {
+    /*public String getTitle() {
         return title;
     }
 
@@ -32,6 +32,14 @@ public class Order {
 
     public void setDescription(String description) {
         this.description = description;
+    }*/
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public Date getSubmitted() {
