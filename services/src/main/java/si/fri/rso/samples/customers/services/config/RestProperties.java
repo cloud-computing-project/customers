@@ -19,4 +19,15 @@ public class RestProperties {
     public void setOrderServiceEnabled(boolean orderServiceEnabled) {
         this.orderServiceEnabled = orderServiceEnabled;
     }
+
+    @ConfigValue(value = "external-services.comment-service.enabled", watch = true)
+    private boolean commentServiceEnabled;
+
+    public boolean isCommentServiceEnabled() {
+        return commentServiceEnabled;
+    }
+
+    public void setCommentServiceEnabled(boolean commentServiceEnabled) {
+        this.commentServiceEnabled = commentServiceEnabled;
+    }
 }

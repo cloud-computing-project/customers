@@ -30,4 +30,6 @@ rest-properties:
   external-services:
     order-service:
       enabled: true
+    comment-service:
+      enabled: true
   healthy: true

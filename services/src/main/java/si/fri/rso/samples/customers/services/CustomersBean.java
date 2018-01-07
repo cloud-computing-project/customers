@@ -5,6 +5,7 @@ import com.kumuluz.ee.logs.LogManager;
 import com.kumuluz.ee.logs.Logger;
 import com.kumuluz.ee.rest.beans.QueryParameters;
 import com.kumuluz.ee.rest.utils.JPAUtils;
+import si.fri.rso.samples.customers.models.Comment;
 import si.fri.rso.samples.customers.models.Customer;
 import si.fri.rso.samples.customers.models.Order;
 import si.fri.rso.samples.customers.services.config.RestProperties;
@@ -48,6 +49,10 @@ public class CustomersBean {
     @DiscoverService("rso-orders")
     private Optional<String> baseUrl;
 
+    @Inject
+    @DiscoverService("rso-comments")
+    private Optional<String> baseUrlComments;
+
     @PostConstruct
     private void init() {
         httpClient = ClientBuilder.newClient();
@@ -81,6 +86,11 @@ public class CustomersBean {
         if (restProperties.isOrderServiceEnabled()) {
             List<Order> orders = customersBean.getOrders(customerId);
             customer.setOrders(orders);
+        }
+
+        if (restProperties.isCommentServiceEnabled()) {
+            List<Comment> comments = customersBean.getComments(customerId);
+            customer.setComments(comments);
         }
 
         return customer;
@@ -159,6 +169,27 @@ public class CustomersBean {
         return new ArrayList<>();
     }
 
+    public List<Comment> getComments(String customerId) {
+
+        if (baseUrl.isPresent()) {
+            try {
+                return httpClient
+                        .target(baseUrlComments.get() + "/v1/comments?where=customerId:EQ:" + customerId)
+                        .request().get(new GenericType<List<Comment>>() {
+                        });
+            } catch (WebApplicationException | ProcessingException e) {
+                log.error(e);
+                throw new InternalServerErrorException(e);
+            }
+        }
+
+        return new ArrayList<>();
+    }
+
+    public List<Comment> getCommentsFallback(String customerId) {
+        return new ArrayList<>();
+    }
+
 
     private void beginTx() {
         if (!em.getTransaction().isActive())
@@ -173,10 +204,5 @@ public class CustomersBean {
     private void rollbackTx() {
         if (em.getTransaction().isActive())
             em.getTransaction().rollback();
-    }
-
-    public void loadOrder(Integer n) {
-
-
     }
 }
