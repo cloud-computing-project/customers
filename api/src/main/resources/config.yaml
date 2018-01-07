@@ -23,6 +23,9 @@ kumuluzee:
       checks:
         data-source-health-check:
           jndi-name: jdbc/CustomersDS
+  cors-filter:
+    servlet:
+      allow-origin: "*"
 rest-properties:
   external-services:
     order-service:
