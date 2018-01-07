@@ -92,6 +92,8 @@ public class CustomersBean {
             List<Comment> comments = customersBean.getComments(customerId);
             customer.setComments(comments);
         }
+        log.info("comment service is "+ restProperties.isCommentServiceEnabled());
+
 
         return customer;
     }
