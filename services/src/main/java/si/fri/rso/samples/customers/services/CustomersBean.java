@@ -75,12 +75,12 @@ public class CustomersBean {
             throw new NotFoundException();
         }
 
-        if(false) {
+        //if(false) {
             if (restProperties.isOrderServiceEnabled()) {
                 List<Order> orders = customersBean.getOrders(customerId);
                 customer.setOrders(orders);
             }
-        }
+        //}
 
         return customer;
     }
