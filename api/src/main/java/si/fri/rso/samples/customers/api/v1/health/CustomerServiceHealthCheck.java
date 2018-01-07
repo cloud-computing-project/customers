@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 @Health
 @ApplicationScoped
-public class OrderServiceHealthCheck implements HealthCheck{
+public class CustomerServiceHealthCheck implements HealthCheck{
     @Inject
     private RestProperties restProperties;
 
@@ -17,9 +17,9 @@ public class OrderServiceHealthCheck implements HealthCheck{
     public HealthCheckResponse call() {
 
         if (restProperties.isHealthy()) {
-            return HealthCheckResponse.named(OrderServiceHealthCheck.class.getSimpleName()).up().build();
+            return HealthCheckResponse.named(CustomerServiceHealthCheck.class.getSimpleName()).up().build();
         } else {
-            return HealthCheckResponse.named(OrderServiceHealthCheck.class.getSimpleName()).down().build();
+            return HealthCheckResponse.named(CustomerServiceHealthCheck.class.getSimpleName()).down().build();
         }
 
     }
