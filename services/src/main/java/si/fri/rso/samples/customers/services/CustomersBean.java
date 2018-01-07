@@ -171,7 +171,7 @@ public class CustomersBean {
 
     public List<Comment> getComments(String customerId) {
 
-        if (baseUrl.isPresent()) {
+        if (baseUrlComments.isPresent()) {
             try {
                 return httpClient
                         .target(baseUrlComments.get() + "/v1/comments?where=customerId:EQ:" + customerId)
