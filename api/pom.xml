@@ -31,8 +31,8 @@
             <artifactId>kumuluzee-health</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.kumuluz.ee.cors</groupId>
-            <artifactId>kumuluzee-cors</artifactId>
+            <groupId>com.kumuluz.ee.metrics</groupId>
+            <artifactId>kumuluzee-metrics-core</artifactId>
         </dependency>
     </dependencies>
 

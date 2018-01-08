@@ -27,7 +27,7 @@
         <kumuluzee-config.version>1.0.0</kumuluzee-config.version>
         <kumuluzee-discovery.version>1.1.0-SNAPSHOT</kumuluzee-discovery.version>
         <kumuluzee-health.version>1.0.0-SNAPSHOT</kumuluzee-health.version>
-        <kumuluzee-cors.version>1.0.2</kumuluzee-cors.version>
+        <kumuluzee-metrics.version>1.0.0-SNAPSHOT</kumuluzee-metrics.version>
 
         <postgresql.version>42.1.4</postgresql.version>
     </properties>
@@ -84,9 +84,9 @@
                 <version>${kumuluzee-health.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.kumuluz.ee.cors</groupId>
-                <artifactId>kumuluzee-cors</artifactId>
-                <version>${kumuluzee-cors.version}</version>
+                <groupId>com.kumuluz.ee.metrics</groupId>
+                <artifactId>kumuluzee-metrics-core</artifactId>
+                <version>${kumuluzee-metrics.version}</version>
             </dependency>
 
             <dependency>

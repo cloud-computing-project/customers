@@ -6,6 +6,7 @@ import si.fri.rso.samples.customers.services.CustomersBean;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import org.eclipse.microprofile.metrics.annotation.Metered;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -28,6 +29,7 @@ public class CustomersResource {
     protected UriInfo uriInfo;
 
     @GET
+    @Metered
     public Response getCustomers() {
 
         List<Customer> customers = customersBean.getCustomers();
