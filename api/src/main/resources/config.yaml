@@ -15,10 +15,10 @@ kumuluzee:
       max-pool-size: 20
   config:
     etcd:
-      hosts: http://169.51.20.118:2379
+      hosts: 169.51.20.118:2379
   discovery:
     etcd:
-      hosts: http://169.51.20.118:2379
+      hosts: 169.51.20.118:2379
   health:
       checks:
         data-source-health-check:
