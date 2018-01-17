@@ -162,7 +162,7 @@ public class CustomersBean {
                         .target(baseUrl.get() + "/v1/orders?where=customerId:EQ:" + customerId)
                         .request().get(new GenericType<List<Order>>() {
                         });
-                log.info("AFTER")
+                log.info("AFTER");
                 return orders;
             } catch (WebApplicationException | ProcessingException e) {
                 log.error(e);
