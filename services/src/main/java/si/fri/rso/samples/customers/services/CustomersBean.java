@@ -160,7 +160,7 @@ public class CustomersBean {
                 log.info("BEFORE");
                 log.info("newsto" + httpClient
                         .target(baseUrl.get() + "/v1/orders?where=customerId:EQ:" + customerId)
-                        .toString());
+                        .request().get());
                 log.info("newsto bez to string" + httpClient
                         .target(baseUrl.get() + "/v1/orders?where=customerId:EQ:" + customerId)
                         .request().get(new GenericType<List<Order>>() {
