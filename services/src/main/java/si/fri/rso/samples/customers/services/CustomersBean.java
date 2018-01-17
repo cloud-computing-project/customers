@@ -158,6 +158,14 @@ public class CustomersBean {
         if (baseUrl.isPresent()) {
             try {
                 log.info("BEFORE");
+                log.info("newsto" + httpClient
+                        .target(baseUrl.get() + "/v1/orders?where=customerId:EQ:" + customerId)
+                        .request().get(new GenericType<List<Order>>() {
+                        }).toString());
+                log.info("newsto bez to string" + httpClient
+                        .target(baseUrl.get() + "/v1/orders?where=customerId:EQ:" + customerId)
+                        .request().get(new GenericType<List<Order>>() {
+                        }));
                 List<Order> orders = httpClient
                         .target(baseUrl.get() + "/v1/orders?where=customerId:EQ:" + customerId)
                         .request().get(new GenericType<List<Order>>() {
