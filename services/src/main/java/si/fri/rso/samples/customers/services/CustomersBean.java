@@ -85,7 +85,9 @@ public class CustomersBean {
 
         if (restProperties.isOrderServiceEnabled()) {
             List<Order> orders = customersBean.getOrders(customerId);
+            log.info("list of orders: " + orders.toString());
             customer.setOrders(orders);
+            log.info("list of orders for customer: " + customer.getOrders().toString());
         }
 
         log.info("comment service is " + restProperties.isCommentServiceEnabled());
