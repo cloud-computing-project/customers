@@ -14,7 +14,7 @@ cache:
   - $HOME/.m2
 
 env:
-  - DOCKER_IMAGE2=amela/customers:healthcheck
+  - DOCKER_IMAGE2=amela/customers:etcd
 
 install:
   - mvn clean package -U
