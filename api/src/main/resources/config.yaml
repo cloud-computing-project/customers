@@ -19,10 +19,6 @@ kumuluzee:
   discovery:
     etcd:
       hosts: 169.51.20.118:30451
-  health:
-      checks:
-        data-source-health-check:
-          jndi-name: jdbc/CustomersDS
   cors-filter:
     servlet:
       allow-origin: "*"

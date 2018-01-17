@@ -157,10 +157,13 @@ public class CustomersBean {
 
         if (baseUrl.isPresent()) {
             try {
-                return httpClient
+                log.info("BEFORE");
+                List<Order> orders = httpClient
                         .target(baseUrl.get() + "/v1/orders?where=customerId:EQ:" + customerId)
                         .request().get(new GenericType<List<Order>>() {
                         });
+                log.info("AFTER")
+                return orders;
             } catch (WebApplicationException | ProcessingException e) {
                 log.error(e);
                 throw new InternalServerErrorException(e);
