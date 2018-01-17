@@ -88,11 +88,11 @@ public class CustomersBean {
             customer.setOrders(orders);
         }
 
+        log.info("comment service is " + restProperties.isCommentServiceEnabled());
         if (restProperties.isCommentServiceEnabled()) {
             List<Comment> comments = customersBean.getComments(customerId);
             customer.setComments(comments);
         }
-        log.info("comment service is "+ restProperties.isCommentServiceEnabled());
 
 
         return customer;
