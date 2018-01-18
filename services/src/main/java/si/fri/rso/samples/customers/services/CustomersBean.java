@@ -46,7 +46,7 @@ public class CustomersBean {
     private Client httpClient;
 
     @Inject
-    @DiscoverService("orders")
+    @DiscoverService("rso-orders")
     private Optional<String> baseUrl;
 
     @Inject
