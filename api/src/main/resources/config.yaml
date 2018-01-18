@@ -15,10 +15,10 @@ kumuluzee:
       max-pool-size: 20
   config:
     etcd:
-      hosts: 169.51.20.118:30451
+      hosts: http://192.168.99.100:2379
   discovery:
     etcd:
-      hosts: 169.51.20.118:30451
+      hosts: http://192.168.99.100:2379
   cors-filter:
     servlet:
       allow-origin: "*"
